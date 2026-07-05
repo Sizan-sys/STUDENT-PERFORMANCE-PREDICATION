@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPPS | Student Performance Prediction System</title>
+    <!-- CSS imports -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/animations.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <!-- Lucide Icon Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="animate-fade-in">
+    <!-- Loading Screen Overlay -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="spinner"></div>
+      <div class="loading-text">Student Performance Prediction System</div>
+    </div>
+
+    <!-- Sticky Navigation Header -->
+    <header class="landing-nav">
+      <div class="container">
+        <a href="./index.html" class="logo-group">
+          <div class="logo-icon">
+            <i data-lucide="brain-circuit"></i>
+          </div>
+          <span>SPPS</span>
+        </a>
+
+        <!-- Menu links -->
+        <ul class="nav-links">
+          <li><a href="./index.html" class="active">Home</a></li>
+          <li><a href="./about.html">About System</a></li>
+          <li><a href="./contact.html">Contact Us</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Light/Dark Theme">
+            <i data-lucide="moon"></i>
+          </button>
+          <a href="./login.html" class="btn btn-secondary">Sign In</a>
+          <a href="./register.html" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content animate-slide-up">
+            <span class="badge badge-info mb-3">Enterprise Machine Learning Platform</span>
+            <h1>Predicting <span>Student Outcomes</span> with ML Precision</h1>
+            <p>Empower your university with AI-driven, actionable early warnings to identify at-risk students, optimize course completion rates, and elevate institutional performance standards.</p>
+            <div class="hero-btns">
+              <a href="./login.html" class="btn btn-primary btn-ripple">
+                Launch System <i data-lucide="arrow-right"></i>
+              </a>
+              <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
+            </div>
+            
+            <div class="hero-stats">
+              <div class="hero-stat-item">
+                <h4 class="counter-val" data-target="94.8" data-decimal="true" data-percent="true">94.8%</h4>
+                <p>ML Prediction Accuracy</p>
+              </div>
+              <div class="hero-stat-item">
+                <h4 class="counter-val" data-target="15000">15,000+</h4>
+                <p>Students Evaluated</p>
+              </div>
+              <div class="hero-stat-item">
+                <h4 class="counter-val" data-target="92" data-percent="true">92%</h4>
+                <p>Retention Improvement</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="hero-illustration animate-float delay-1" style="display: flex; justify-content: center; align-items: center;">
+            <div class="glass-card" style="padding: 30px; text-align: left; max-width: 440px; border-radius: 20px; box-shadow: var(--shadow-lg);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                <div style="display: flex; gap: 12px; align-items: center;">
+                  <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700;">AP</div>
+                  <div>
+                    <h4 style="font-size: 0.95rem; color: var(--text-primary);">Aryan Paudel</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-muted);">ID: STU2026-894</p>
+                  </div>
+                </div>
+                <span class="badge badge-warning">At Risk</span>
+              </div>
+              
+              <div style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 6px; color: var(--text-secondary);">
+                  <span>Inference Probability of Passing:</span>
+                  <strong>64.2%</strong>
+                </div>
+                <div class="progress-container">
+                  <div class="progress-bar" style="width: 64.2%; background-color: var(--warning);"></div>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 0.825rem; border-top: 1px solid var(--border-color); padding-top: 16px; margin-bottom: 20px;">
+                <div>
+                  <span style="color: var(--text-muted);">Attendance Rate:</span>
+                  <p style="font-weight: 600; color: var(--text-secondary); font-family: var(--font-mono);">71.5%</p>
+                </div>
+                <div>
+                  <span style="color: var(--text-muted);">Weekly Study Hours:</span>
+                  <p style="font-weight: 600; color: var(--text-secondary); font-family: var(--font-mono);">4.2 hrs</p>
+                </div>
+              </div>
+
+              <div style="padding: 12px; background: rgba(245, 158, 11, 0.08); border-left: 3px solid var(--warning); border-radius: 4px; font-size: 0.8rem; color: var(--text-secondary);">
+                <strong>Early Action Recommendation:</strong> Target Aryan with personal mentoring and assign mandatory review cohorts immediately.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features Bento Grid -->
+    <section class="features" style="padding: 80px 0; border-top: 1px solid var(--border-color);">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-success mb-2">Designed for Educational Excellence</span>
+          <h2>Platform Key Capabilities</h2>
+          <p>A comprehensive system engineered to deliver powerful results and support academic advisors at every stage of the student cycle.</p>
+        </div>
+        
+        <div class="features-grid">
+          <!-- Card 1 -->
+          <div class="glass-card feature-card">
+            <div class="feature-icon-wrapper">
+              <i data-lucide="brain"></i>
+            </div>
+            <h3>Smart ML Inference</h3>
+            <p>Runs sophisticated, weighted classifiers utilizing student study hours, attendance metrics, exam grades, and background parameters to predict passing outcomes with over 94% precision.</p>
+          </div>
+          
+          <!-- Card 2 -->
+          <div class="glass-card feature-card">
+            <div class="feature-icon-wrapper" style="background: rgba(16, 185, 129, 0.08); color: var(--accent);">
+              <i data-lucide="layout-dashboard"></i>
+            </div>
+            <h3>Premium SaaS Analytics</h3>
+            <p>Examine trends, attendances, and GPA spreads with professional dashboards equipped with light/dark adaptive layout controls and high-contrast graphical models.</p>
+          </div>
+          
+          <!-- Card 3 -->
+          <div class="glass-card feature-card">
+            <div class="feature-icon-wrapper" style="background: rgba(245, 158, 11, 0.08); color: var(--warning);">
+              <i data-lucide="shield-alert"></i>
+            </div>
+            <h3>Risk Early Warnings</h3>
+            <p>Categorize students instantly into High Risk, Medium Risk, and Low Risk, prompting academic counselors to deploy personalized interventions early on.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow: How prediction works -->
+    <section id="how-it-works" class="workflow-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-info mb-2">Platform Mechanics</span>
+          <h2>How Predictions Work</h2>
+          <p>Behind the elegant SaaS interface operates an institutional predictive system designed to evaluate and elevate academic performance safely.</p>
+        </div>
+
+        <div class="workflow-steps">
+          <div class="workflow-step">
+            <div class="step-num">1</div>
+            <h3>Import Parameters</h3>
+            <p>Load general student backgrounds, previous GPAs, attendance trackers, and study schedules safely into our central index system.</p>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-num">2</div>
+            <h3>Feature Engineering</h3>
+            <p>Weighted scoring models automatically process indicators like sleep hours, internet availability, and midterms to standardize performance signals.</p>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-num">3</div>
+            <h3>Neural Evaluation</h3>
+            <p>Our machine learning classifier computes the passing probability, evaluating standard errors to generate detailed confidence tiers.</p>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-num">4</div>
+            <h3>Advisory Actions</h3>
+            <p>System generates custom action steps (tutoring, check-ins, counselor alerts) depending on the registered student risk category.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- University Statistics Grid -->
+    <section style="padding: 80px 0;">
+      <div class="container">
+        <div class="glass-card" style="padding: 40px; border-radius: 24px; text-align: center; background: radial-gradient(circle at 90% 10%, rgba(37, 99, 235, 0.05) 0%, transparent 50%);">
+          <h2 style="font-size: 2rem; font-family: var(--font-display); margin-bottom: 12px; color: var(--text-primary);">Trusted by Top Institutions</h2>
+          <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px auto; font-size: 1.05rem;">Leading educational centers rely on SPPS to identify at-risk students, streamline advisor workflow steps, and safely secure institutional retentions.</p>
+          
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px;">
+            <div>
+              <h3 style="font-size: 2.25rem; color: var(--primary); font-family: var(--font-display);">12+</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px;">Partner Academies</p>
+            </div>
+            <div>
+              <h3 style="font-size: 2.25rem; color: var(--primary); font-family: var(--font-display);">250K</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px;">Predictions Run</p>
+            </div>
+            <div>
+              <h3 style="font-size: 2.25rem; color: var(--primary); font-family: var(--font-display);">98%</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px;">Platform Uptime</p>
+            </div>
+            <div>
+              <h3 style="font-size: 2.25rem; color: var(--primary); font-family: var(--font-display);">4.8/5</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px;">Advisor Rating</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section style="padding: 80px 0; background-color: var(--bg-secondary); border-top: 1px solid var(--border-color);">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-warning mb-2">User Feedback</span>
+          <h2>What Advisors Say</h2>
+          <p>See how the Student Performance Prediction System helps university professors and department heads drive real outcomes.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="glass-card testimonial-card">
+            <p>"Before SPPS, we only caught struggling students after they failed their midterms. Now, the early warning classifier prompts us 4 weeks into the term, letting us intervene and save over 18% of struggling students each semester."</p>
+            <div class="testimonial-author">
+              <div class="author-img" style="background: var(--primary); color: #fff; font-weight: 700;">MC</div>
+              <div class="author-info">
+                <h4>Dr. Marcus Vance</h4>
+                <p>Dean of Computer Science, Westwood Univ.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card testimonial-card">
+            <p>"The clean UI/UX makes tracking student progress effortless. Advisors can easily search, filter by risk level, and drill down into detailed academic records with a single click. Absolutely phenomenal SaaS system."</p>
+            <div class="testimonial-author">
+              <div class="author-img" style="background: var(--secondary); color: #fff; font-weight: 700;">SH</div>
+              <div class="author-info">
+                <h4>Prof. Susan Hayes</h4>
+                <p>Academic Counselor, Eastgate Institute</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frequently Asked Questions -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-info mb-2">Common Questions</span>
+          <h2>FAQ</h2>
+          <p>Find quick answers regarding our prediction mechanics, student data safety, and integration policies.</p>
+        </div>
+
+        <div class="faq-container">
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="this.parentElement.classList.toggle('active')">
+              <span>What parameters does the prediction system evaluate?</span>
+              <i data-lucide="chevron-down" class="accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              The neural classifier evaluates a balanced mix of academic indicators (previous GPAs, attendance, midterm exam scores) alongside background parameters (study hours, sleep schedules, internet accessibility, extracurricular actions) to calculate success probability safely.
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="this.parentElement.classList.toggle('active')">
+              <span>Can the system be integrated into standard University LMS?</span>
+              <i data-lucide="chevron-down" class="accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              Yes, our system is built using highly modular, compliant API schemas, allowing full-scale future integrations with standard Learning Management Systems such as Canvas, Moodle, and Blackboard.
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="this.parentElement.classList.toggle('active')">
+              <span>Is student personal data protected?</span>
+              <i data-lucide="chevron-down" class="accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              Absolutely. In a production environment, all student records are fully encrypted in transit and at rest, aligning strictly with FERPA and GDPR regulatory guidelines.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <div class="logo-group mb-4">
+              <div class="logo-icon">
+                <i data-lucide="brain-circuit"></i>
+              </div>
+              <span>SPPS</span>
+            </div>
+            <p style="font-size: 0.9rem; line-height: 1.6;">Elevating university retention standards with machine learning early warnings and elegant, easy-to-use advisor tools.</p>
+          </div>
+          
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="./index.html">Platform Home</a></li>
+              <li><a href="./about.html">About System</a></li>
+              <li><a href="./contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Platform Pages</h4>
+            <ul>
+              <li><a href="./login.html">Sign In</a></li>
+              <li><a href="./register.html">Sign Up</a></li>
+              <li><a href="./dashboard.html">Admin Dashboard</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Contact Support</h4>
+            <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px;">Need technical help?</p>
+            <a href="mailto:support@spps-system.edu" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">
+              Email Support
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Student Performance Prediction System (SPPS). All institutional rights reserved.</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Twitter"><i data-lucide="twitter" style="width: 18px; height: 18px;"></i></a>
+            <a href="#" aria-label="GitHub"><i data-lucide="github" style="width: 18px; height: 18px;"></i></a>
+            <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin" style="width: 18px; height: 18px;"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script src="/js/theme.js"></script>
+    <script src="/js/app.js"></script>
+  </body>
+</html>

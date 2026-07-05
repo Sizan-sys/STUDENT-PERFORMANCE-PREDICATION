@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPPS | About System</title>
+    <!-- CSS imports -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/animations.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <!-- Lucide Icon Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="animate-fade-in">
+    <!-- Loading Screen Overlay -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="spinner"></div>
+      <div class="loading-text">Loading System Information...</div>
+    </div>
+
+    <div class="dashboard-container">
+      
+      <!-- Sticky Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-brand">
+            <div class="logo-icon" style="width: 30px; height: 30px; border-radius: 6px;">
+              <i data-lucide="brain-circuit" style="width: 18px; height: 18px;"></i>
+            </div>
+            <span class="sidebar-brand-name">SPPS Dashboard</span>
+          </div>
+          <button class="sidebar-toggle-btn" id="sidebar-toggle" title="Collapse Sidebar">
+            <i data-lucide="chevron-left"></i>
+          </button>
+        </div>
+
+        <nav class="sidebar-menu">
+          <span class="sidebar-menu-title">Main Panel</span>
+          <a href="./dashboard.html" class="sidebar-link">
+            <i data-lucide="layout-dashboard"></i>
+            <span class="sidebar-link-text">Dashboard</span>
+          </a>
+          <a href="./prediction.html" class="sidebar-link">
+            <i data-lucide="cpu"></i>
+            <span class="sidebar-link-text">Run Prediction</span>
+          </a>
+          <a href="./students.html" class="sidebar-link">
+            <i data-lucide="users"></i>
+            <span class="sidebar-link-text">Students Directory</span>
+          </a>
+          
+          <span class="sidebar-menu-title">Analytics & Tools</span>
+          <a href="./analytics.html" class="sidebar-link">
+            <i data-lucide="line-chart"></i>
+            <span class="sidebar-link-text">Deep Analytics</span>
+          </a>
+          <a href="./reports.html" class="sidebar-link">
+            <i data-lucide="file-spreadsheet"></i>
+            <span class="sidebar-link-text">Report Center</span>
+          </a>
+          
+          <span class="sidebar-menu-title">User Account</span>
+          <a href="./profile.html" class="sidebar-link">
+            <i data-lucide="user-cog"></i>
+            <span class="sidebar-link-text">My Profile</span>
+          </a>
+          <a href="./settings.html" class="sidebar-link">
+            <i data-lucide="sliders"></i>
+            <span class="sidebar-link-text">System Settings</span>
+          </a>
+          
+          <span class="sidebar-menu-title">Support</span>
+          <a href="./about.html" class="sidebar-link active">
+            <i data-lucide="help-circle"></i>
+            <span class="sidebar-link-text">About System</span>
+          </a>
+          <a href="./contact.html" class="sidebar-link">
+            <i data-lucide="mail"></i>
+            <span class="sidebar-link-text">Contact Support</span>
+          </a>
+
+          <div style="margin-top: auto; padding-top: 20px;">
+            <a href="./index.html" class="sidebar-link" style="color: var(--danger); background: rgba(239, 68, 68, 0.05);" onclick="window.showToast('Signing out safety...', 'warning')">
+              <i data-lucide="log-out"></i>
+              <span class="sidebar-link-text">Log Out</span>
+            </a>
+          </div>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="sidebar-user-avatar">AD</div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name">Advisor Admin</div>
+            <div class="sidebar-user-role">Department Head</div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Panel Wrapper -->
+      <main class="main-content" id="main-content">
+        
+        <!-- Top Sticky Navbar -->
+        <header class="top-navbar">
+          <div class="navbar-left">
+            <button class="theme-toggle-btn" id="mobile-sidebar-toggle" style="display: none;" title="Open Sidebar">
+              <i data-lucide="menu"></i>
+            </button>
+            <div class="navbar-search">
+              <i data-lucide="search"></i>
+              <input type="text" class="navbar-search-input" placeholder="Search student ID, adviser..." />
+            </div>
+          </div>
+
+          <div class="navbar-right">
+            <!-- Theme Toggle Button -->
+            <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Light/Dark Mode">
+              <i data-lucide="moon"></i>
+            </button>
+
+            <!-- Message Alerts Menu -->
+            <button class="btn btn-icon" id="messages-trigger" title="Advisor Messages">
+              <i data-lucide="message-square" style="width: 18px; height: 18px;"></i>
+            </button>
+
+            <!-- Notifications Menu -->
+            <button class="btn btn-icon" id="notifications-trigger" style="position: relative;" title="System Warnings">
+              <i data-lucide="bell" style="width: 18px; height: 18px;"></i>
+              <span style="position: absolute; top: 8px; right: 8px; width: 8px; height: 8px; background-color: var(--danger); border-radius: 50%;"></span>
+            </button>
+
+            <!-- Profile Badge dropdown -->
+            <div class="dropdown">
+              <div class="sidebar-user-avatar" id="profile-dropdown-trigger" style="cursor: pointer; width: 36px; height: 36px; font-size: 0.85rem;">AD</div>
+              <ul class="dropdown-menu">
+                <li class="dropdown-item" onclick="window.location.href='./profile.html'"><i data-lucide="user"></i> My Profile</li>
+                <li class="dropdown-item" onclick="window.location.href='./settings.html'"><i data-lucide="settings"></i> Settings</li>
+                <li style="border-top: 1px solid var(--border-color); margin: 4px 0;"></li>
+                <li class="dropdown-item" onclick="window.location.href='./index.html'" style="color: var(--danger);"><i data-lucide="log-out"></i> Logout</li>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Content Workspace -->
+        <div class="content-body">
+          
+          <!-- Breadcrumbs Title section -->
+          <div class="breadcrumbs">
+            <span>SPPS Console</span>
+            <span class="separator">/</span>
+            <span class="current">About System</span>
+          </div>
+
+          <div style="margin-bottom: 32px;">
+            <h1 style="font-size: 1.8rem; color: var(--text-primary); font-family: var(--font-display);">About SPPS Platform</h1>
+            <p style="color: var(--text-secondary); font-size: 0.925rem;">Unlock academic excellence through predictive ML modeling, proactive warning alerts, and cohort tracking.</p>
+          </div>
+
+          <!-- About page details -->
+          <div style="display: flex; flex-direction: column; gap: 32px;">
+            <!-- Section 1: Core Aim -->
+            <div class="glass-card" style="padding: 32px;">
+              <div style="display: flex; gap: 24px; align-items: start; flex-wrap: wrap;">
+                <div class="feature-icon-wrapper" style="width: 64px; height: 64px; background: rgba(37, 99, 235, 0.08); color: var(--primary);">
+                  <i data-lucide="graduation-cap" style="width: 28px; height: 28px;"></i>
+                </div>
+                <div style="flex: 1; min-width: 240px;">
+                  <h2 style="font-family: var(--font-display); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 12px;">Aim of the Project</h2>
+                  <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">
+                    The **Student Performance Prediction System (SPPS)** is engineered to empower academic advisors and university administrators with proactive, data-driven forecasting utilities. By modeling predictive outputs from previous CGPAs, attendance levels, and core social factors, the platform determines potential risk groups with a verified statistical accuracy index of over **94%**. This early detection is key to deploying targeted support systems before term-end examinations.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 2: Core Features List Grid -->
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text-primary); margin-bottom: 20px; padding-left: 8px;">Key System Pillars</h3>
+              
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <div class="glass-card" style="padding: 24px;">
+                  <i data-lucide="cpu" style="color: var(--primary); margin-bottom: 16px; width: 28px; height: 28px;"></i>
+                  <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 8px;">Neural Inference Classifier</h4>
+                  <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5;">Evaluates complex grade arrays and study patterns immediately using stable local inference thresholds.</p>
+                </div>
+
+                <div class="glass-card" style="padding: 24px;">
+                  <i data-lucide="shield-alert" style="color: var(--danger); margin-bottom: 16px; width: 28px; height: 28px;"></i>
+                  <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 8px;">Proactive Risk Warnings</h4>
+                  <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5;">Flags cohort indicators when study rates, final term prep, or attendance rates slump under critical limits.</p>
+                </div>
+
+                <div class="glass-card" style="padding: 24px;">
+                  <i data-lucide="file-bar-chart" style="color: var(--accent); margin-bottom: 16px; width: 28px; height: 28px;"></i>
+                  <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 8px;">Institutional Audit Sheets</h4>
+                  <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5;">Download structured PDF or Excel transcripts for faculty interventions, ensuring complete security compliance.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3: Technical specifications block -->
+            <div class="glass-card" style="padding: 24px;">
+              <h3 style="font-family: var(--font-display); font-size: 1.15rem; color: var(--text-primary); margin-bottom: 16px;">Model Metadata</h3>
+              
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; font-size: 0.85rem;">
+                <div style="padding: 12px; background: var(--sidebar-active); border-radius: 6px;">
+                  <span style="color: var(--text-muted);">Classifier Algorithm</span>
+                  <p style="font-weight: 600; color: var(--text-primary); margin-top: 4px;">Multilayer Perceptron Neural Network</p>
+                </div>
+                <div style="padding: 12px; background: var(--sidebar-active); border-radius: 6px;">
+                  <span style="color: var(--text-muted);">Verified Accuracy Margin</span>
+                  <p style="font-weight: 600; color: var(--text-primary); margin-top: 4px; font-family: var(--font-mono);">94.8% Stable</p>
+                </div>
+                <div style="padding: 12px; background: var(--sidebar-active); border-radius: 6px;">
+                  <span style="color: var(--text-muted);">Inference Latency</span>
+                  <p style="font-weight: 600; color: var(--text-primary); margin-top: 4px; font-family: var(--font-mono);">&lt; 14ms</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </main>
+
+    </div>
+
+    <!-- JS Scripts -->
+    <script src="/js/theme.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/dashboard.js"></script>
+  </body>
+</html>

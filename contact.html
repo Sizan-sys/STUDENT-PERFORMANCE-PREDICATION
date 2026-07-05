@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPPS | Contact Support</title>
+    <!-- CSS imports -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/animations.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <!-- Lucide Icon Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="animate-fade-in">
+    <!-- Loading Screen Overlay -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="spinner"></div>
+      <div class="loading-text">Loading Support Hub...</div>
+    </div>
+
+    <div class="dashboard-container">
+      
+      <!-- Sticky Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-brand">
+            <div class="logo-icon" style="width: 30px; height: 30px; border-radius: 6px;">
+              <i data-lucide="brain-circuit" style="width: 18px; height: 18px;"></i>
+            </div>
+            <span class="sidebar-brand-name">SPPS Dashboard</span>
+          </div>
+          <button class="sidebar-toggle-btn" id="sidebar-toggle" title="Collapse Sidebar">
+            <i data-lucide="chevron-left"></i>
+          </button>
+        </div>
+
+        <nav class="sidebar-menu">
+          <span class="sidebar-menu-title">Main Panel</span>
+          <a href="./dashboard.html" class="sidebar-link">
+            <i data-lucide="layout-dashboard"></i>
+            <span class="sidebar-link-text">Dashboard</span>
+          </a>
+          <a href="./prediction.html" class="sidebar-link">
+            <i data-lucide="cpu"></i>
+            <span class="sidebar-link-text">Run Prediction</span>
+          </a>
+          <a href="./students.html" class="sidebar-link">
+            <i data-lucide="users"></i>
+            <span class="sidebar-link-text">Students Directory</span>
+          </a>
+          
+          <span class="sidebar-menu-title">Analytics & Tools</span>
+          <a href="./analytics.html" class="sidebar-link">
+            <i data-lucide="line-chart"></i>
+            <span class="sidebar-link-text">Deep Analytics</span>
+          </a>
+          <a href="./reports.html" class="sidebar-link">
+            <i data-lucide="file-spreadsheet"></i>
+            <span class="sidebar-link-text">Report Center</span>
+          </a>
+          
+          <span class="sidebar-menu-title">User Account</span>
+          <a href="./profile.html" class="sidebar-link">
+            <i data-lucide="user-cog"></i>
+            <span class="sidebar-link-text">My Profile</span>
+          </a>
+          <a href="./settings.html" class="sidebar-link">
+            <i data-lucide="sliders"></i>
+            <span class="sidebar-link-text">System Settings</span>
+          </a>
+          
+          <span class="sidebar-menu-title">Support</span>
+          <a href="./about.html" class="sidebar-link">
+            <i data-lucide="help-circle"></i>
+            <span class="sidebar-link-text">About System</span>
+          </a>
+          <a href="./contact.html" class="sidebar-link active">
+            <i data-lucide="mail"></i>
+            <span class="sidebar-link-text">Contact Support</span>
+          </a>
+
+          <div style="margin-top: auto; padding-top: 20px;">
+            <a href="./index.html" class="sidebar-link" style="color: var(--danger); background: rgba(239, 68, 68, 0.05);" onclick="window.showToast('Signing out safety...', 'warning')">
+              <i data-lucide="log-out"></i>
+              <span class="sidebar-link-text">Log Out</span>
+            </a>
+          </div>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="sidebar-user-avatar">AD</div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name">Advisor Admin</div>
+            <div class="sidebar-user-role">Department Head</div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Panel Wrapper -->
+      <main class="main-content" id="main-content">
+        
+        <!-- Top Sticky Navbar -->
+        <header class="top-navbar">
+          <div class="navbar-left">
+            <button class="theme-toggle-btn" id="mobile-sidebar-toggle" style="display: none;" title="Open Sidebar">
+              <i data-lucide="menu"></i>
+            </button>
+            <div class="navbar-search">
+              <i data-lucide="search"></i>
+              <input type="text" class="navbar-search-input" placeholder="Search student ID, adviser..." />
+            </div>
+          </div>
+
+          <div class="navbar-right">
+            <!-- Theme Toggle Button -->
+            <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Light/Dark Mode">
+              <i data-lucide="moon"></i>
+            </button>
+
+            <!-- Message Alerts Menu -->
+            <button class="btn btn-icon" id="messages-trigger" title="Advisor Messages">
+              <i data-lucide="message-square" style="width: 18px; height: 18px;"></i>
+            </button>
+
+            <!-- Notifications Menu -->
+            <button class="btn btn-icon" id="notifications-trigger" style="position: relative;" title="System Warnings">
+              <i data-lucide="bell" style="width: 18px; height: 18px;"></i>
+              <span style="position: absolute; top: 8px; right: 8px; width: 8px; height: 8px; background-color: var(--danger); border-radius: 50%;"></span>
+            </button>
+
+            <!-- Profile Badge dropdown -->
+            <div class="dropdown">
+              <div class="sidebar-user-avatar" id="profile-dropdown-trigger" style="cursor: pointer; width: 36px; height: 36px; font-size: 0.85rem;">AD</div>
+              <ul class="dropdown-menu">
+                <li class="dropdown-item" onclick="window.location.href='./profile.html'"><i data-lucide="user"></i> My Profile</li>
+                <li class="dropdown-item" onclick="window.location.href='./settings.html'"><i data-lucide="settings"></i> Settings</li>
+                <li style="border-top: 1px solid var(--border-color); margin: 4px 0;"></li>
+                <li class="dropdown-item" onclick="window.location.href='./index.html'" style="color: var(--danger);"><i data-lucide="log-out"></i> Logout</li>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Content Workspace -->
+        <div class="content-body">
+          
+          <!-- Breadcrumbs Title section -->
+          <div class="breadcrumbs">
+            <span>SPPS Console</span>
+            <span class="separator">/</span>
+            <span class="current">Contact Support</span>
+          </div>
+
+          <div style="margin-bottom: 32px;">
+            <h1 style="font-size: 1.8rem; color: var(--text-primary); font-family: var(--font-display);">Get in Touch with Tech Support</h1>
+            <p style="color: var(--text-secondary); font-size: 0.925rem;">Submit integration requests, model retraining queries, or user access warnings to our team.</p>
+          </div>
+
+          <!-- Contact Page Content Layout Grid -->
+          <div class="dashboard-grid-2-1" style="align-items: start;">
+            
+            <!-- Left Side Interactive Form -->
+            <div class="glass-card">
+              <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text-primary); margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+                <i data-lucide="mail" style="color: var(--primary); display: inline-block; vertical-align: middle; margin-right: 6px;"></i> Send Helpdesk Message
+              </h3>
+
+              <form onsubmit="event.preventDefault(); window.showToast('Your query has been logged! Support ticket is #SPPS-9244', 'success'); this.reset();">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="contact-name" class="form-label">Your Name</label>
+                    <input type="text" id="contact-name" class="form-control" placeholder="Prof. Dr. Anil Kumar Dahal" value="Prof. Dr. Anil Kumar Dahal" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="contact-email" class="form-label">Your Work Email</label>
+                    <input type="email" id="contact-email" class="form-control" placeholder="prof.anildahal@gmail.com" value="prof.anildahal@gmail.com" required />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-subject" class="form-label">Support Topic</label>
+                  <select id="contact-subject" class="form-control">
+                    <option value="model">Predictive Model Retraining / Precision</option>
+                    <option value="access">Advisor Workspace Credential Issue</option>
+                    <option value="ferpa">FERPA Security Audit Inquiry</option>
+                    <option value="other" selected>General System Feedback / Bug Report</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-msg" class="form-label">Message Details</label>
+                  <textarea id="contact-msg" class="form-control" style="min-height: 120px;" placeholder="Specify subject parameters, student ID references, or browser logs..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-ripple" style="margin-top: 12px; width: 100%;">
+                  Submit Support Ticket <i data-lucide="send" class="ml-1"></i>
+                </button>
+              </form>
+            </div>
+
+            <!-- Right Side Location & Info panel -->
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+              <!-- Contact Details panel -->
+              <div class="glass-card" style="padding: 24px;">
+                <h3 style="font-family: var(--font-display); font-size: 1.15rem; color: var(--text-primary); margin-bottom: 16px;">Helpdesk Office Hours</h3>
+                
+                <div style="display: flex; flex-direction: column; gap: 16px; font-size: 0.875rem;">
+                  <div style="display: flex; gap: 12px;">
+                    <i data-lucide="clock" style="color: var(--primary); width: 18px; height: 18px; flex-shrink: 0;"></i>
+                    <div>
+                      <strong>Working Hours:</strong>
+                      <p style="color: var(--text-secondary); margin-top: 2px;">Monday - Friday: 08:00 AM - 05:00 PM EST</p>
+                    </div>
+                  </div>
+
+                  <div style="display: flex; gap: 12px;">
+                    <i data-lucide="mail" style="color: var(--primary); width: 18px; height: 18px; flex-shrink: 0;"></i>
+                    <div>
+                      <strong>Central Email:</strong>
+                      <p style="color: var(--text-secondary); margin-top: 2px; font-family: var(--font-mono);">spps.support@university.edu</p>
+                    </div>
+                  </div>
+
+                  <div style="display: flex; gap: 12px;">
+                    <i data-lucide="phone" style="color: var(--primary); width: 18px; height: 18px; flex-shrink: 0;"></i>
+                    <div>
+                      <strong>Tech Hotline:</strong>
+                      <p style="color: var(--text-secondary); margin-top: 2px; font-family: var(--font-mono);">+1 (800) 555-SPPS</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Campus Maps visual placeholder -->
+              <div class="glass-card" style="padding: 16px; display: flex; flex-direction: column; justify-content: center; align-items: center; border-style: dashed; border-color: var(--border-color); text-align: center;">
+                <i data-lucide="map-pin" style="color: var(--danger); width: 36px; height: 36px; margin-bottom: 12px;"></i>
+                <h4 style="font-family: var(--font-display); font-size: 1rem; color: var(--text-primary); margin-bottom: 4px;">Campus Support Office</h4>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">Engineering & Data Sciences Hall<br>Building B, Room 408</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </main>
+
+    </div>
+
+    <!-- JS Scripts -->
+    <script src="/js/theme.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/dashboard.js"></script>
+  </body>
+</html>

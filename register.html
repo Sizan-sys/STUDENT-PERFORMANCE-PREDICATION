@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPPS | Register Student Profile</title>
+    <!-- CSS imports -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/animations.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <!-- Lucide Icon Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="animate-fade-in">
+    <!-- Loading Screen Overlay -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="spinner"></div>
+      <div class="loading-text">Loading Enrollment Services...</div>
+    </div>
+
+    <div class="forms-container" style="padding: 60px 24px;">
+      <div class="form-wrapper animate-slide-up" style="max-width: 560px;">
+        
+        <!-- App Logo Return Home -->
+        <div style="text-align: center; margin-bottom: 24px;">
+          <a href="./index.html" class="logo-group" style="display: inline-flex; justify-content: center;">
+            <div class="logo-icon">
+              <i data-lucide="brain-circuit"></i>
+            </div>
+            <span>SPPS Portal</span>
+          </a>
+        </div>
+
+        <div class="glass-card" style="padding: 40px; border-radius: 20px;">
+          <div class="form-header" style="margin-bottom: 24px;">
+            <h2>Create Student Profile</h2>
+            <p>Already have an account? <a href="./login.html">Sign In</a></p>
+          </div>
+
+          <!-- Registration Form Target for validation.js -->
+          <form id="register-form">
+            
+            <!-- Row 1: Name and Student ID -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fullname" class="form-label">Full Name</label>
+                <div class="input-wrapper">
+                  <span class="input-icon-left"><i data-lucide="user"></i></span>
+                  <input type="text" id="fullname" class="form-control form-control-icon-left" placeholder="Bishal KC" value="Bishal KC" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="studentid" class="form-label">Student ID</label>
+                <div class="input-wrapper">
+                  <span class="input-icon-left"><i data-lucide="file-digit"></i></span>
+                  <input type="text" id="studentid" class="form-control form-control-icon-left" placeholder="STU2026-004" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 2: Faculty and Semester -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="faculty" class="form-label">Faculty / Department</label>
+                <select id="faculty" class="form-control">
+                  <option value="" disabled selected>Select Faculty</option>
+                  <option value="Computer Science">Computer Science</option>
+                  <option value="Engineering">Engineering</option>
+                  <option value="Business">Business</option>
+                  <option value="Arts">Arts</option>
+                  <option value="Sciences">Sciences</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="semester" class="form-label">Current Semester</label>
+                <select id="semester" class="form-control">
+                  <option value="" disabled selected>Select Semester</option>
+                  <option value="Semester 1">Semester 1</option>
+                  <option value="Semester 2">Semester 2</option>
+                  <option value="Semester 3">Semester 3</option>
+                  <option value="Semester 4">Semester 4</option>
+                  <option value="Semester 5">Semester 5</option>
+                  <option value="Semester 6">Semester 6</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row 3: Gender Choice -->
+            <div class="form-group">
+              <label class="form-label">Gender</label>
+              <div style="display: flex; gap: 24px; padding: 6px 0;">
+                <label class="checkbox-label">
+                  <input type="radio" name="gender" value="Male" checked style="accent-color: var(--primary);" />
+                  <span>Male</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="radio" name="gender" value="Female" style="accent-color: var(--primary);" />
+                  <span>Female</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="radio" name="gender" value="Other" style="accent-color: var(--primary);" />
+                  <span>Other</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Email Address -->
+            <div class="form-group">
+              <label for="email" class="form-label">Work Email Address</label>
+              <div class="input-wrapper">
+                <span class="input-icon-left"><i data-lucide="mail"></i></span>
+                <input type="email" id="email" class="form-control form-control-icon-left" placeholder="bishal.kc@uni.edu" value="bishal.kc@uni.edu" />
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+              <label for="password" class="form-label">Password</label>
+              <div class="input-wrapper">
+                <span class="input-icon-left"><i data-lucide="lock"></i></span>
+                <input type="password" id="password" class="form-control form-control-icon-left" placeholder="Min. 8 chars, 1 number" />
+              </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+              <label for="confirm-password" class="form-label">Confirm Password</label>
+              <div class="input-wrapper">
+                <span class="input-icon-left"><i data-lucide="shield-check"></i></span>
+                <input type="password" id="confirm-password" class="form-control form-control-icon-left" placeholder="Match password" />
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 24px;">
+              <label class="checkbox-label">
+                <input type="checkbox" id="terms" checked required />
+                <span style="font-size: 0.825rem; line-height: 1.4;">I accept the terms, privacy guidelines, and FERPA informational compliance regulations.</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary submit-btn-full btn-ripple" style="margin-bottom: 0;">
+              Create Student Account <i data-lucide="user-plus" style="width: 16px; height: 16px;"></i>
+            </button>
+          </form>
+        </div>
+
+        <div style="text-align: center; margin-top: 24px;">
+          <a href="./index.html" style="font-size: 0.85rem; color: var(--text-muted); display: inline-flex; align-items: center; gap: 4px;">
+            <i data-lucide="arrow-left" style="width: 14px; height: 14px;"></i> Return to Homepage
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- JS Scripts -->
+    <script src="/js/theme.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/validation.js"></script>
+  </body>
+</html>

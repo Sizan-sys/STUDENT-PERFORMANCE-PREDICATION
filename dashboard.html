@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPPS | Advisor Dashboard</title>
+    <!-- CSS imports -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/animations.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <!-- Lucide Icon Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="animate-fade-in">
+    <!-- Loading Screen Overlay -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="spinner"></div>
+      <div class="loading-text">Loading Advisor Core...</div>
+    </div>
+
+    <div class="dashboard-container">
+      
+      <!-- Sticky Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-brand">
+            <div class="logo-icon" style="width: 30px; height: 30px; border-radius: 6px;">
+              <i data-lucide="brain-circuit" style="width: 18px; height: 18px;"></i>
+            </div>
+            <span class="sidebar-brand-name">SPPS Dashboard</span>
+          </div>
+          <button class="sidebar-toggle-btn" id="sidebar-toggle" title="Collapse Sidebar">
+            <i data-lucide="chevron-left"></i>
+          </button>
+        </div>
+
+        <nav class="sidebar-menu">
+          <span class="sidebar-menu-title">Main Panel</span>
+          <a href="./dashboard.html" class="sidebar-link active">
+            <i data-lucide="layout-dashboard"></i>
+            <span class="sidebar-link-text">Dashboard</span>
+          </a>
+          <a href="./prediction.html" class="sidebar-link">
+            <i data-lucide="cpu"></i>
+            <span class="sidebar-link-text">Run Prediction</span>
+          </a>
+          <a href="./students.html" class="sidebar-link">
+            <i data-lucide="users"></i>
+            <span class="sidebar-link-text">Students Directory</span>
+          </a>
+          
+          <span class="sidebar-menu-title">Analytics & Tools</span>
+          <a href="./analytics.html" class="sidebar-link">
+            <i data-lucide="line-chart"></i>
+            <span class="sidebar-link-text">Deep Analytics</span>
+          </a>
+          <a href="./reports.html" class="sidebar-link">
+            <i data-lucide="file-spreadsheet"></i>
+            <span class="sidebar-link-text">Report Center</span>
+          </a>
+          
+          <span class="sidebar-menu-title">User Account</span>
+          <a href="./profile.html" class="sidebar-link">
+            <i data-lucide="user-cog"></i>
+            <span class="sidebar-link-text">My Profile</span>
+          </a>
+          <a href="./settings.html" class="sidebar-link">
+            <i data-lucide="sliders"></i>
+            <span class="sidebar-link-text">System Settings</span>
+          </a>
+          
+          <span class="sidebar-menu-title">Support</span>
+          <a href="./about.html" class="sidebar-link">
+            <i data-lucide="help-circle"></i>
+            <span class="sidebar-link-text">About System</span>
+          </a>
+          <a href="./contact.html" class="sidebar-link">
+            <i data-lucide="mail"></i>
+            <span class="sidebar-link-text">Contact Support</span>
+          </a>
+
+          <div style="margin-top: auto; padding-top: 20px;">
+            <a href="./index.html" class="sidebar-link" style="color: var(--danger); background: rgba(239, 68, 68, 0.05);" onclick="window.showToast('Signing out safety...', 'warning')">
+              <i data-lucide="log-out"></i>
+              <span class="sidebar-link-text">Log Out</span>
+            </a>
+          </div>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="sidebar-user-avatar">AD</div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name">Advisor Admin</div>
+            <div class="sidebar-user-role">Department Head</div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Panel Wrapper -->
+      <main class="main-content" id="main-content">
+        
+        <!-- Top Sticky Navbar -->
+        <header class="top-navbar">
+          <div class="navbar-left">
+            <button class="theme-toggle-btn" id="mobile-sidebar-toggle" style="display: none;" title="Open Sidebar">
+              <i data-lucide="menu"></i>
+            </button>
+            <div class="navbar-search">
+              <i data-lucide="search"></i>
+              <input type="text" class="navbar-search-input" placeholder="Search student ID, adviser..." />
+            </div>
+          </div>
+
+          <div class="navbar-right">
+            <!-- Theme Toggle Button -->
+            <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Light/Dark Mode">
+              <i data-lucide="moon"></i>
+            </button>
+
+            <!-- Message Alerts Menu -->
+            <button class="btn btn-icon" id="messages-trigger" title="Advisor Messages">
+              <i data-lucide="message-square" style="width: 18px; height: 18px;"></i>
+            </button>
+
+            <!-- Notifications Menu -->
+            <button class="btn btn-icon" id="notifications-trigger" style="position: relative;" title="System Warnings">
+              <i data-lucide="bell" style="width: 18px; height: 18px;"></i>
+              <span style="position: absolute; top: 8px; right: 8px; width: 8px; height: 8px; background-color: var(--danger); border-radius: 50%;"></span>
+            </button>
+
+            <!-- Profile Badge dropdown -->
+            <div class="dropdown">
+              <div class="sidebar-user-avatar" id="profile-dropdown-trigger" style="cursor: pointer; width: 36px; height: 36px; font-size: 0.85rem;">AD</div>
+              <ul class="dropdown-menu">
+                <li class="dropdown-item" onclick="window.location.href='./profile.html'"><i data-lucide="user"></i> My Profile</li>
+                <li class="dropdown-item" onclick="window.location.href='./settings.html'"><i data-lucide="settings"></i> Settings</li>
+                <li style="border-top: 1px solid var(--border-color); margin: 4px 0;"></li>
+                <li class="dropdown-item" onclick="window.location.href='./index.html'" style="color: var(--danger);"><i data-lucide="log-out"></i> Logout</li>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Content Workspace -->
+        <div class="content-body">
+          
+          <!-- Breadcrumbs Title section -->
+          <div class="breadcrumbs">
+            <span>SPPS Console</span>
+            <span class="separator">/</span>
+            <span class="current">Main Dashboard</span>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <div>
+              <h1 style="font-size: 1.8rem; color: var(--text-primary); font-family: var(--font-display);">Advisor Dashboard Overview</h1>
+              <p style="color: var(--text-secondary); font-size: 0.925rem;">Real-time student performance screening & early predictive classification analysis.</p>
+            </div>
+            
+            <a href="./prediction.html" class="btn btn-primary btn-ripple">
+              <i data-lucide="plus-circle"></i> Run New Prediction
+            </a>
+          </div>
+
+          <!-- Dashboard Cards Grid Metrics -->
+          <div class="metrics-grid">
+            <!-- Card 1: Total Students -->
+            <div class="glass-card metric-card animate-slide-up">
+              <div class="metric-header">
+                <span class="metric-title">Total Screened</span>
+                <div class="metric-icon primary"><i data-lucide="users" style="width: 18px; height: 18px;"></i></div>
+              </div>
+              <h2 class="metric-value counter-val" data-target="1284">1,284</h2>
+              <div class="metric-footer">
+                <span class="metric-trend-up"><i data-lucide="trending-up" class="inline" style="width: 12px; height: 12px;"></i> +4.5%</span> than last term
+              </div>
+            </div>
+
+            <!-- Card 2: Passed Students -->
+            <div class="glass-card metric-card animate-slide-up delay-1">
+              <div class="metric-header">
+                <span class="metric-title">Predicted Passes</span>
+                <div class="metric-icon accent"><i data-lucide="check-circle" style="width: 18px; height: 18px;"></i></div>
+              </div>
+              <h2 class="metric-value counter-val" data-target="1042">1,042</h2>
+              <div class="metric-footer">
+                <span class="metric-trend-up"><i data-lucide="trending-up" class="inline" style="width: 12px; height: 12px;"></i> 81.2%</span> pass probability
+              </div>
+            </div>
+
+            <!-- Card 3: Failed Students -->
+            <div class="glass-card metric-card animate-slide-up delay-2">
+              <div class="metric-header">
+                <span class="metric-title">High Risk Tiers</span>
+                <div class="metric-icon danger"><i data-lucide="alert-octagon" style="width: 18px; height: 18px;"></i></div>
+              </div>
+              <h2 class="metric-value counter-val" data-target="98">98</h2>
+              <div class="metric-footer">
+                <span class="metric-trend-down"><i data-lucide="trending-down" class="inline" style="width: 12px; height: 12px;"></i> 7.6%</span> failing danger limits
+              </div>
+            </div>
+
+            <!-- Card 4: Prediction Accuracy -->
+            <div class="glass-card metric-card animate-slide-up delay-3">
+              <div class="metric-header">
+                <span class="metric-title">Model Accuracy</span>
+                <div class="metric-icon secondary"><i data-lucide="cpu" style="width: 18px; height: 18px;"></i></div>
+              </div>
+              <h2 class="metric-value counter-val" data-target="94.8" data-decimal="true" data-percent="true">94.8%</h2>
+              <div class="metric-footer">
+                Stable neural classifier margin
+              </div>
+            </div>
+
+            <!-- Card 5: Today's Predictions -->
+            <div class="glass-card metric-card animate-slide-up delay-4">
+              <div class="metric-header">
+                <span class="metric-title">Today's Queries</span>
+                <div class="metric-icon warning"><i data-lucide="zap" style="width: 18px; height: 18px;"></i></div>
+              </div>
+              <h2 class="metric-value counter-val" data-target="32">32</h2>
+              <div class="metric-footer">
+                Active academic screenings run
+              </div>
+            </div>
+          </div>
+
+          <!-- Dashboard Charts Grid Layout -->
+          <div class="dashboard-grid-2-1">
+            <!-- Left: Bar Chart Faculty Analysis -->
+            <div class="glass-card" style="min-height: 380px; display: flex; flex-direction: column;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="font-family: var(--font-display); font-size: 1.15rem; color: var(--text-primary);">Average GPAs Across Academic Faculties</h3>
+                <span class="badge badge-info">Weighted Metrics</span>
+              </div>
+              <div style="flex: 1; position: relative;">
+                <canvas id="dashboardBarChart"></canvas>
+              </div>
+            </div>
+
+            <!-- Right: Risk level Doughnut Chart -->
+            <div class="glass-card" style="min-height: 380px; display: flex; flex-direction: column;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="font-family: var(--font-display); font-size: 1.15rem; color: var(--text-primary);">Current Student Risk Ratios</h3>
+                <span class="badge badge-warning">Live Assessment</span>
+              </div>
+              <div style="flex: 1; position: relative;">
+                <canvas id="dashboardPieChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Grid: Recent predictions list, announcements and calendar -->
+          <div class="dashboard-grid-2-1">
+            
+            <!-- Left side: Recent Students list table -->
+            <div class="glass-card table-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div class="table-header-row">
+                  <h3 class="table-title">Recent Student Screenings</h3>
+                  <a href="./students.html" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">
+                    View All Directory
+                  </a>
+                </div>
+                
+                <div class="table-wrapper">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Student Details</th>
+                        <th>Department</th>
+                        <th>GPA</th>
+                        <th>Attendance</th>
+                        <th>Risk Tiers</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr onclick="window.location.href='./students.html'" style="cursor: pointer;">
+                        <td>
+                          <div class="user-cell">
+                            <div class="user-cell-avatar" style="background-color: var(--primary); color: #fff;">AS</div>
+                            <div>
+                              <div class="user-cell-name">Aarav Sharma</div>
+                              <div class="user-cell-id">STU001</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>Computer Science</td>
+                        <td style="font-family: var(--font-mono); font-weight:600;">3.82</td>
+                        <td style="font-family: var(--font-mono);">98%</td>
+                        <td><span class="badge badge-success">Low Risk</span></td>
+                      </tr>
+
+                      <tr onclick="window.location.href='./students.html'" style="cursor: pointer;">
+                        <td>
+                          <div class="user-cell">
+                            <div class="user-cell-avatar" style="background-color: var(--danger); color: #fff;">AA</div>
+                            <div>
+                              <div class="user-cell-name">Aayush Adhikari</div>
+                              <div class="user-cell-id">STU002</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>Engineering</td>
+                        <td style="font-family: var(--font-mono); font-weight:600;">2.15</td>
+                        <td style="font-family: var(--font-mono);">68%</td>
+                        <td><span class="badge badge-danger">High Risk</span></td>
+                      </tr>
+
+                      <tr onclick="window.location.href='./students.html'" style="cursor: pointer;">
+                        <td>
+                          <div class="user-cell">
+                            <div class="user-cell-avatar" style="background-color: var(--success); color: #fff;">ST</div>
+                            <div>
+                              <div class="user-cell-name">Sagar Thapa</div>
+                              <div class="user-cell-id">STU003</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>Business</td>
+                        <td style="font-family: var(--font-mono); font-weight:600;">3.45</td>
+                        <td style="font-family: var(--font-mono);">92%</td>
+                        <td><span class="badge badge-success">Low Risk</span></td>
+                      </tr>
+
+                      <tr onclick="window.location.href='./students.html'" style="cursor: pointer;">
+                        <td>
+                          <div class="user-cell">
+                            <div class="user-cell-avatar" style="background-color: var(--warning); color: #fff;">RK</div>
+                            <div>
+                              <div class="user-cell-name">Roshan Karki</div>
+                              <div class="user-cell-id">STU004</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>Sciences</td>
+                        <td style="font-family: var(--font-mono); font-weight:600;">2.80</td>
+                        <td style="font-family: var(--font-mono);">81%</td>
+                        <td><span class="badge badge-warning">Medium Risk</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right side: Calendar Widget & Announcements -->
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+              <!-- Calendar Widget -->
+              <div class="glass-card" style="padding: 16px;">
+                <h3 style="font-family: var(--font-display); font-size: 1rem; color: var(--text-primary); margin-bottom: 12px;">Advisor Agenda Calendar</h3>
+                
+                <div class="calendar-widget">
+                  <div class="calendar-header">
+                    <span class="calendar-month-year" id="calendar-month-year">July 2026</span>
+                    <div class="calendar-nav">
+                      <button class="btn btn-secondary" id="calendar-prev" style="padding: 4px 8px; font-size: 0.75rem;"><i data-lucide="chevron-left" style="width: 14px; height: 14px;"></i></button>
+                      <button class="btn btn-secondary" id="calendar-next" style="padding: 4px 8px; font-size: 0.75rem;"><i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i></button>
+                    </div>
+                  </div>
+                  
+                  <div class="calendar-days-grid" id="calendar-days">
+                    <!-- Day names / slots loaded via dashboard.js -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Announcements Box -->
+              <div class="glass-card" style="padding: 20px;">
+                <h3 style="font-family: var(--font-display); font-size: 1rem; color: var(--text-primary); margin-bottom: 16px;">System Announcements</h3>
+                
+                <div class="announcement-list">
+                  <div class="announcement-item">
+                    <h4 class="announcement-title">End-Term Model Training Updates</h4>
+                    <p class="announcement-meta">July 01, 2026 | System Core</p>
+                    <p class="announcement-text">The neural prediction classifier has re-evaluated Semester 4 records. Accuracy threshold has climbed to 94.8%.</p>
+                  </div>
+
+                  <div class="announcement-item">
+                    <h4 class="announcement-title">FERPA Compliance Evaluation</h4>
+                    <p class="announcement-meta">June 28, 2026 | Administration</p>
+                    <p class="announcement-text">Academic counselors must secure personal credentials. Do not share raw student GPAs outside portal interfaces.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Activity Timeline Recent Predictions -->
+          <div class="glass-card" style="margin-top: 24px; padding: 24px;">
+            <h3 style="font-family: var(--font-display); font-size: 1.15rem; color: var(--text-primary); margin-bottom: 20px;">Recent Activity Timeline</h3>
+            
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-icon"><i data-lucide="cpu"></i></div>
+                <div class="timeline-content">
+                  <div class="timeline-header">
+                    <h4 class="timeline-title">Prediction Calculation Run</h4>
+                    <span class="timeline-time">10 minutes ago</span>
+                  </div>
+                  <p class="timeline-desc">Model run for David Kim (STU001). Success probability: 96.4%. Risk status: Low Risk.</p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-icon" style="background: rgba(239, 68, 68, 0.08); color: var(--danger);"><i data-lucide="alert-triangle"></i></div>
+                <div class="timeline-content">
+                  <div class="timeline-header">
+                    <h4 class="timeline-title" style="color: var(--danger);">Critical High Risk Alert</h4>
+                    <span class="timeline-time">2 hours ago</span>
+                  </div>
+                  <p class="timeline-desc">Student Sarah Jenkins (STU002) has fallen under 70% class attendance. ML alert triggered.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+    </div>
+
+    <!-- JS Scripts -->
+    <script src="/js/theme.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/charts.js"></script>
+    <script src="/js/dashboard.js"></script>
+  </body>
+</html>

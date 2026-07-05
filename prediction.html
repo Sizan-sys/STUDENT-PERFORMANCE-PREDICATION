@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPPS | Run Prediction</title>
+    <!-- CSS imports -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/animations.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <!-- Lucide Icon Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="animate-fade-in">
+    <!-- Loading Screen Overlay -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="spinner"></div>
+      <div class="loading-text">Loading Predictive Models...</div>
+    </div>
+
+    <div class="dashboard-container">
+      
+      <!-- Sticky Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-brand">
+            <div class="logo-icon" style="width: 30px; height: 30px; border-radius: 6px;">
+              <i data-lucide="brain-circuit" style="width: 18px; height: 18px;"></i>
+            </div>
+            <span class="sidebar-brand-name">SPPS Dashboard</span>
+          </div>
+          <button class="sidebar-toggle-btn" id="sidebar-toggle" title="Collapse Sidebar">
+            <i data-lucide="chevron-left"></i>
+          </button>
+        </div>
+
+        <nav class="sidebar-menu">
+          <span class="sidebar-menu-title">Main Panel</span>
+          <a href="./dashboard.html" class="sidebar-link">
+            <i data-lucide="layout-dashboard"></i>
+            <span class="sidebar-link-text">Dashboard</span>
+          </a>
+          <a href="./prediction.html" class="sidebar-link active">
+            <i data-lucide="cpu"></i>
+            <span class="sidebar-link-text">Run Prediction</span>
+          </a>
+          <a href="./students.html" class="sidebar-link">
+            <i data-lucide="users"></i>
+            <span class="sidebar-link-text">Students Directory</span>
+          </a>
+          
+          <span class="sidebar-menu-title">Analytics & Tools</span>
+          <a href="./analytics.html" class="sidebar-link">
+            <i data-lucide="line-chart"></i>
+            <span class="sidebar-link-text">Deep Analytics</span>
+          </a>
+          <a href="./reports.html" class="sidebar-link">
+            <i data-lucide="file-spreadsheet"></i>
+            <span class="sidebar-link-text">Report Center</span>
+          </a>
+          
+          <span class="sidebar-menu-title">User Account</span>
+          <a href="./profile.html" class="sidebar-link">
+            <i data-lucide="user-cog"></i>
+            <span class="sidebar-link-text">My Profile</span>
+          </a>
+          <a href="./settings.html" class="sidebar-link">
+            <i data-lucide="sliders"></i>
+            <span class="sidebar-link-text">System Settings</span>
+          </a>
+          
+          <span class="sidebar-menu-title">Support</span>
+          <a href="./about.html" class="sidebar-link">
+            <i data-lucide="help-circle"></i>
+            <span class="sidebar-link-text">About System</span>
+          </a>
+          <a href="./contact.html" class="sidebar-link">
+            <i data-lucide="mail"></i>
+            <span class="sidebar-link-text">Contact Support</span>
+          </a>
+
+          <div style="margin-top: auto; padding-top: 20px;">
+            <a href="./index.html" class="sidebar-link" style="color: var(--danger); background: rgba(239, 68, 68, 0.05);" onclick="window.showToast('Signing out safety...', 'warning')">
+              <i data-lucide="log-out"></i>
+              <span class="sidebar-link-text">Log Out</span>
+            </a>
+          </div>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="sidebar-user-avatar">AD</div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name">Advisor Admin</div>
+            <div class="sidebar-user-role">Department Head</div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Panel Wrapper -->
+      <main class="main-content" id="main-content">
+        
+        <!-- Top Sticky Navbar -->
+        <header class="top-navbar">
+          <div class="navbar-left">
+            <button class="theme-toggle-btn" id="mobile-sidebar-toggle" style="display: none;" title="Open Sidebar">
+              <i data-lucide="menu"></i>
+            </button>
+            <div class="navbar-search">
+              <i data-lucide="search"></i>
+              <input type="text" class="navbar-search-input" placeholder="Search student ID, adviser..." />
+            </div>
+          </div>
+
+          <div class="navbar-right">
+            <!-- Theme Toggle Button -->
+            <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Light/Dark Mode">
+              <i data-lucide="moon"></i>
+            </button>
+
+            <!-- Message Alerts Menu -->
+            <button class="btn btn-icon" id="messages-trigger" title="Advisor Messages">
+              <i data-lucide="message-square" style="width: 18px; height: 18px;"></i>
+            </button>
+
+            <!-- Notifications Menu -->
+            <button class="btn btn-icon" id="notifications-trigger" style="position: relative;" title="System Warnings">
+              <i data-lucide="bell" style="width: 18px; height: 18px;"></i>
+              <span style="position: absolute; top: 8px; right: 8px; width: 8px; height: 8px; background-color: var(--danger); border-radius: 50%;"></span>
+            </button>
+
+            <!-- Profile Badge dropdown -->
+            <div class="dropdown">
+              <div class="sidebar-user-avatar" id="profile-dropdown-trigger" style="cursor: pointer; width: 36px; height: 36px; font-size: 0.85rem;">AD</div>
+              <ul class="dropdown-menu">
+                <li class="dropdown-item" onclick="window.location.href='./profile.html'"><i data-lucide="user"></i> My Profile</li>
+                <li class="dropdown-item" onclick="window.location.href='./settings.html'"><i data-lucide="settings"></i> Settings</li>
+                <li style="border-top: 1px solid var(--border-color); margin: 4px 0;"></li>
+                <li class="dropdown-item" onclick="window.location.href='./index.html'" style="color: var(--danger);"><i data-lucide="log-out"></i> Logout</li>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Content Workspace -->
+        <div class="content-body">
+          
+          <!-- Breadcrumbs Title section -->
+          <div class="breadcrumbs">
+            <span>SPPS Console</span>
+            <span class="separator">/</span>
+            <span class="current">Run Prediction</span>
+          </div>
+
+          <div style="margin-bottom: 32px;">
+            <h1 style="font-size: 1.8rem; color: var(--text-primary); font-family: var(--font-display);">Run ML Student Prediction</h1>
+            <p style="color: var(--text-secondary); font-size: 0.925rem;">Specify student academic indicators and social factors below to predict passing rates instantly.</p>
+          </div>
+
+          <div class="dashboard-grid-2-1" style="align-items: start;">
+            
+            <!-- Left Panel: Prediction Input Form -->
+            <div class="glass-card">
+              <h3 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--text-primary); margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+                <i data-lucide="file-text" class="inline-block mr-2" style="color: var(--primary);"></i> Student Input Parameters
+              </h3>
+
+              <form id="prediction-form">
+                
+                <!-- Category 1: Academic Indicators -->
+                <h4 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 16px;">Academic Indicators</h4>
+                
+                <div class="form-row">
+                  <div class="form-group range-slider-group">
+                    <div class="range-slider-header">
+                      <label for="attendance" class="form-label">Attendance Rate (%)</label>
+                      <span class="range-slider-value" id="val-attendance">85%</span>
+                    </div>
+                    <input type="range" id="attendance" class="slider-control" min="0" max="100" value="85" oninput="document.getElementById('val-attendance').textContent = this.value + '%'" />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="prev-gpa" class="form-label">Previous Cumulative GPA</label>
+                    <input type="number" id="prev-gpa" class="form-control" step="0.01" min="0.00" max="4.00" value="3.15" required />
+                  </div>
+                </div>
+
+                <div class="field-grid-3">
+                  <div class="form-group">
+                    <label for="assignment-score" class="form-label">Assignment Score (%)</label>
+                    <input type="number" id="assignment-score" class="form-control" min="0" max="100" value="80" required />
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="mid-exam" class="form-label">Mid Exam (%)</label>
+                    <input type="number" id="mid-exam" class="form-control" min="0" max="100" value="75" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="final-exam" class="form-label">Final Exam (%)</label>
+                    <input type="number" id="final-exam" class="form-control" min="0" max="100" value="78" required />
+                  </div>
+                </div>
+
+                <div style="border-top: 1px solid var(--border-color); margin: 24px 0;"></div>
+
+                <!-- Category 2: Lifestyle & Social Factors -->
+                <h4 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 16px;">Lifestyle & Social Parameters</h4>
+
+                <div class="form-row">
+                  <div class="form-group range-slider-group">
+                    <div class="range-slider-header">
+                      <label for="study-hours" class="form-label">Weekly Study Hours</label>
+                      <span class="range-slider-value" id="val-study-hours">12 hrs</span>
+                    </div>
+                    <input type="range" id="study-hours" class="slider-control" min="0" max="40" value="12" oninput="document.getElementById('val-study-hours').textContent = this.value + ' hrs'" />
+                  </div>
+
+                  <div class="form-group range-slider-group">
+                    <div class="range-slider-header">
+                      <label for="sleep-hours" class="form-label">Daily Sleep Hours</label>
+                      <span class="range-slider-value" id="val-sleep-hours">7 hrs</span>
+                    </div>
+                    <input type="range" id="sleep-hours" class="slider-control" min="1" max="12" value="7" oninput="document.getElementById('val-sleep-hours').textContent = this.value + ' hrs'" />
+                  </div>
+                </div>
+
+                <div class="field-grid-3">
+                  <div class="form-group">
+                    <label for="internet-access" class="form-label">Internet Access</label>
+                    <select id="internet-access" class="form-control">
+                      <option value="yes" selected>Yes, High Speed</option>
+                      <option value="no">No, Limited/None</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="family-income" class="form-label">Family Income Level</label>
+                    <select id="family-income" class="form-control">
+                      <option value="high">High</option>
+                      <option value="medium" selected>Medium</option>
+                      <option value="low">Low</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="extracurricular" class="form-label">Extracurriculars</label>
+                    <select id="extracurricular" class="form-control">
+                      <option value="yes" selected>Yes, Active</option>
+                      <option value="no">No</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-ripple" id="predict-btn" style="width: 100%; padding: 14px; font-weight: 600; font-size: 1rem; margin-top: 16px;">
+                  Calculate AI Performance Prediction <i data-lucide="brain-circuit" class="ml-1"></i>
+                </button>
+
+              </form>
+            </div>
+
+            <!-- Right Panel: Prediction Results Visual Output -->
+            <div style="position: sticky; top: 100px;">
+              <!-- 1. Default Welcome placeholder card -->
+              <div class="glass-card text-center" id="prediction-result-placeholder" style="padding: 40px; border-style: dashed; border-color: var(--border-color);">
+                <div class="feature-icon-wrapper" style="margin: 0 auto 20px auto; width: 64px; height: 64px; border-radius: 50%; background: var(--sidebar-active);">
+                  <i data-lucide="cpu" style="width: 28px; height: 28px; color: var(--primary);"></i>
+                </div>
+                <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text-primary); margin-bottom: 8px;">Waiting for Parameters</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">Fill out the student parameters card on the left side and click "Calculate AI Performance Prediction" to run simulated neural classification.</p>
+              </div>
+
+              <!-- 2. Animated Loading Indicator (Hidden initially) -->
+              <div class="glass-card text-center" id="prediction-loading" style="display: none; padding: 50px;">
+                <div class="spinner" style="margin: 0 auto 20px auto;"></div>
+                <h4 style="font-family: var(--font-display); font-size: 1.15rem; color: var(--text-primary); margin-bottom: 6px;">Deploying Neural Classifier</h4>
+                <p style="color: var(--text-secondary); font-size: 0.85rem;" class="skeleton-loader" style="width: 200px; height: 16px; margin: 0 auto;"></p>
+                <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px;">
+                  <span class="skeleton-loader" style="width: 100%; height: 20px; border-radius: 4px;"></span>
+                  <span class="skeleton-loader" style="width: 80%; height: 20px; border-radius: 4px; margin: 0 auto;"></span>
+                </div>
+              </div>
+
+              <!-- 3. Final Prediction Result Card (Injected via prediction.js) -->
+              <div class="glass-card" id="prediction-result-card" style="display: none; border-left: 6px solid var(--accent);">
+                <!-- Dynamic Content goes here -->
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </main>
+
+    </div>
+
+    <!-- JS Scripts -->
+    <script src="/js/theme.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/prediction.js"></script>
+    <script>
+      // Quick event listener to hide placeholder when loading starts
+      document.getElementById('prediction-form').addEventListener('submit', () => {
+        document.getElementById('prediction-result-placeholder').style.display = 'none';
+      });
+    </script>
+  </body>
+</html>

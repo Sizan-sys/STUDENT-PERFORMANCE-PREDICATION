@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPPS | Secure Login</title>
+    <!-- CSS imports -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/animations.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <!-- Lucide Icon Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="animate-fade-in">
+    <!-- Loading Screen Overlay -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="spinner"></div>
+      <div class="loading-text">Securing Advisor Workspace...</div>
+    </div>
+
+    <div class="forms-container">
+      <div class="form-wrapper animate-slide-up">
+        
+        <!-- App Logo Return Home -->
+        <div style="text-align: center; margin-bottom: 24px;">
+          <a href="./index.html" class="logo-group" style="display: inline-flex; justify-content: center;">
+            <div class="logo-icon">
+              <i data-lucide="brain-circuit"></i>
+            </div>
+            <span>SPPS Dashboard</span>
+          </a>
+        </div>
+
+        <div class="glass-card" style="padding: 40px; border-radius: 20px;">
+          <div class="form-header">
+            <h2>Welcome Back</h2>
+            <p>Don't have an advisor account yet? <a href="./register.html">Sign Up</a></p>
+          </div>
+
+          <!-- Login Form Target for validation.js -->
+          <form id="login-form">
+            
+            <!-- Email Input -->
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address</label>
+              <div class="input-wrapper">
+                <span class="input-icon-left"><i data-lucide="mail"></i></span>
+                <input type="email" id="email" class="form-control form-control-icon-left" placeholder="advisor@university.edu" />
+              </div>
+            </div>
+
+            <!-- Password Input -->
+            <div class="form-group">
+              <label for="password" class="form-label">Password</label>
+              <div class="input-wrapper">
+                <span class="input-icon-left"><i data-lucide="lock"></i></span>
+                <input type="password" id="password" class="form-control form-control-icon-left" placeholder="••••••••" />
+              </div>
+            </div>
+
+            <!-- Remember me & Forgot Password link -->
+            <div class="form-actions-row">
+              <label class="checkbox-label">
+                <input type="checkbox" id="remember-me" />
+                <span>Remember me</span>
+              </label>
+              <a href="#" class="forgot-password-link" onclick="window.showToast('Password recovery instructions sent to your email!', 'info')">Forgot Password?</a>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary submit-btn-full btn-ripple" id="login-submit-btn">
+              Sign In <i data-lucide="log-in" style="width: 16px; height: 16px;"></i>
+            </button>
+
+            <!-- Social separator -->
+            <div class="social-separator">
+              <span>Or Sign In With</span>
+            </div>
+
+            <!-- Social Single Sign-on buttons -->
+            <div class="social-btns-grid">
+              <button type="button" class="social-btn" onclick="window.showToast('Connecting Microsoft Azure SSO...', 'info')">
+                <svg viewBox="0 0 23 23" fill="currentColor">
+                  <path d="M0 0h11v11H0z" fill="#F25022"/><path d="M12 0h11v11H12z" fill="#7FBA00"/><path d="M0 12h11v11H0z" fill="#00A4EF"/><path d="M12 12h11v11H12z" fill="#FFB900"/>
+                </svg>
+                <span>Microsoft account</span>
+              </button>
+              
+              <button type="button" class="social-btn" onclick="window.showToast('Connecting Google Workspace SSO...', 'info')">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                </svg>
+                <span>Google account</span>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+        <div style="text-align: center; margin-top: 24px;">
+          <a href="./index.html" style="font-size: 0.85rem; color: var(--text-muted); display: inline-flex; align-items: center; gap: 4px;">
+            <i data-lucide="arrow-left" style="width: 14px; height: 14px;"></i> Return to Homepage
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- JS Scripts -->
+    <script src="/js/theme.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/validation.js"></script>
+  </body>
+</html>
